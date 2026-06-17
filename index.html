@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navaneethakrishnan | Full Stack Developer</title>
+    <meta name="description" content="Portfolio of S Navaneethakrishnan — Passionate Java Full Stack Developer specializing in Spring Boot, React, and modern web technologies." />
+    <meta name="author" content="S Navaneethakrishnan" />
+    <meta property="og:title" content="Navaneethakrishnan | Full Stack Developer" />
+    <meta property="og:description" content="Passionate Java Full Stack Developer building dynamic, responsive web applications." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+      <div class="loader-content">
+        <div class="loader-spinner"></div>
+        <p class="loader-text">Loading Portfolio...</p>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="profile">
+          <img src="images/profile.jpg" alt="Navaneethakrishnan profile photo" class="profile-img" />
+          <div class="profile-content">
+            <h2 class="name text-white">Navaneethakrishnan</h2>
+            <span class="position text-dark">Full Stack Developer</span>
+          </div>
+        </div>
+
+        <ul class="menu">
+          <li class="list active">
+            <a href="#about" class="link">
+              <i class="fa-solid fa-user"></i>
+              <span>About Me</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#education" class="link">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>Education</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#skills" class="link">
+              <i class="fa-solid fa-code"></i>
+              <span>Skills</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#projects" class="link">
+              <i class="fa-solid fa-diagram-project"></i>
+              <span>Projects</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#contact" class="link">
+              <i class="fa-solid fa-envelope"></i>
+              <span>Contact</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-footer">
+          <a href="#contact" class="btn sidebar-btn">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Let's Talk</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="content">
+        <!-- About / Hero Section -->
+        <section id="about">
+          <div class="about-inner">
+            <div class="about-text reveal">
+              <span class="greeting">Hello, I'm</span>
+              <h1 class="hero-name">S Navaneethakrishnan</h1>
+              <div class="typewriter-wrapper">
+                <span class="typewriter-prefix">I'm a </span>
+                <span class="typewriter-text" id="typewriter"></span>
+                <span class="typewriter-cursor">|</span>
+              </div>
+              <p class="about-description">
+                Passionate Java Full Stack Web Developer with a strong foundation in building dynamic and responsive web applications. Proficient in Java, Spring Boot, React JS, and databases like PostgreSQL. Hands-on experience in developing RESTful APIs and integrating frontend and backend components seamlessly. Dedicated to solving real-world problems and delivering efficient, user-friendly web solutions.
+              </p>
+              <div class="about-cta">
+                <button class="btn btn-primary-glow" id="hireMeBtn">
+                  <i class="fa-solid fa-briefcase"></i> Hire Me
+                </button>
+                <a href="#" class="btn btn-outline" id="resumeBtn">
+                  <i class="fa-solid fa-download"></i> Download Resume
+                </a>
+              </div>
+              <div class="about-stats">
+                <div class="stat-item reveal-delay-1">
+                  <span class="stat-number" data-count="5">0</span><span class="stat-plus">+</span>
+                  <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item reveal-delay-2">
+                  <span class="stat-number" data-count="8">0</span><span class="stat-plus">+</span>
+                  <span class="stat-label">Technologies</span>
+                </div>
+                <div class="stat-item reveal-delay-3">
+                  <span class="stat-number" data-count="1">0</span><span class="stat-plus">+</span>
+                  <span class="stat-label">Years Learning</span>
+                </div>
+              </div>
+            </div>
+            <div class="about-image reveal">
+              <div class="image-frame">
+                <img src="./images/img.jpg" alt="Navaneethakrishnan" />
+                <div class="image-glow"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+          <div class="section-inner">
+            <header class="section-header reveal">
+              <span class="section-tag">My Journey</span>
+              <h2 class="section-heading">Education</h2>
+            </header>
+            <div class="timeline-items">
+              <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2017 - 2018</div>
+                <div class="timeline-content">
+                  <div class="timeline-icon"><i class="fa-solid fa-school"></i></div>
+                  <h3>SSLC</h3>
+                  <p class="timeline-place">Government Boys Higher Secondary School</p>
+                  <div class="timeline-badge">
+                    <i class="fa-solid fa-chart-line"></i> 85.6%
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2019 - 2020</div>
+                <div class="timeline-content">
+                  <div class="timeline-icon"><i class="fa-solid fa-book-open"></i></div>
+                  <h3>HSC</h3>
+                  <p class="timeline-place">Government Boys Higher Secondary School</p>
+                  <div class="timeline-badge">
+                    <i class="fa-solid fa-chart-line"></i> 69.6%
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2020 - 2024</div>
+                <div class="timeline-content">
+                  <div class="timeline-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                  <h3>B.E Computer Science and Engineering</h3>
+                  <p class="timeline-place">University College of Engineering, BIT Campus</p>
+                  <div class="timeline-badge">
+                    <i class="fa-solid fa-chart-line"></i> 76.1%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+          <div class="section-inner">
+            <header class="section-header reveal">
+              <span class="section-tag">What I Know</span>
+              <h2 class="section-heading">Skills & Technologies</h2>
+            </header>
+
+            <div class="skills-categories">
+              <!-- Frontend -->
+              <div class="skill-category reveal">
+                <h3 class="category-title"><i class="fa-solid fa-palette"></i> Frontend</h3>
+                <div class="skills-grid">
+                  <div class="skill-card">
+                    <i class="fa-brands fa-html5"></i>
+                    <span>HTML5</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                  </div>
+                  <div class="skill-card">
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <span>CSS3</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                  </div>
+                  <div class="skill-card">
+                    <i class="fa-brands fa-js"></i>
+                    <span>JavaScript</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                  </div>
+                  <div class="skill-card">
+                    <i class="fa-brands fa-react"></i>
+                    <span>React JS</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                  </div>
+                  <div class="skill-card">
+                    <i class="fa-brands fa-react"></i>
+                    <span>Next.js</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Backend -->
+              <div class="skill-category reveal">
+                <h3 class="category-title"><i class="fa-solid fa-server"></i> Backend</h3>
+                <div class="skills-grid">
+                  <div class="skill-card">
+                    <i class="fa-brands fa-java"></i>
+                    <span>Java</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                  </div>
+                  <div class="skill-card">
+                    <i class="fa-solid fa-leaf"></i>
+                    <span>Spring Boot</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                  </div>
+                  <div class="skill-card">
+                    <i class="fa-solid fa-plug"></i>
+                    <span>REST APIs</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Database & Tools -->
+              <div class="skill-category reveal">
+                <h3 class="category-title"><i class="fa-solid fa-database"></i> Database & Tools</h3>
+                <div class="skills-grid">
+                  <div class="skill-card">
+                    <i class="fa-solid fa-database"></i>
+                    <span>PostgreSQL</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+                  </div>
+                  <div class="skill-card">
+                    <i class="fa-brands fa-git-alt"></i>
+                    <span>Git</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                  </div>
+                  <div class="skill-card">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                  </div>
+                  <div class="skill-card">
+                    <i class="fa-solid fa-terminal"></i>
+                    <span>VS Code</span>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+          <div class="section-inner">
+            <header class="section-header reveal">
+              <span class="section-tag">My Work</span>
+              <h2 class="section-heading">Featured Projects</h2>
+            </header>
+
+            <div class="projects-grid">
+              <!-- Project 1 -->
+              <div class="project-card reveal">
+                <div class="project-image">
+                  <div class="project-placeholder">
+                    <i class="fa-solid fa-users-gear"></i>
+                  </div>
+                  <div class="project-overlay">
+                    <div class="project-links">
+                      <a href="#" class="project-link" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                      <a href="#" class="project-link" title="Source Code"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>HRMS — Human Resource Management</h3>
+                  <p>Full-featured HRMS with role-based access, leave management, attendance tracking, and employee dashboards.</p>
+                  <div class="project-tags">
+                    <span class="tag">Next.js</span>
+                    <span class="tag">Spring Boot</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">REST API</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 2 -->
+              <div class="project-card reveal">
+                <div class="project-image">
+                  <div class="project-placeholder">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </div>
+                  <div class="project-overlay">
+                    <div class="project-links">
+                      <a href="#" class="project-link" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                      <a href="#" class="project-link" title="Source Code"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>E-Commerce Web Application</h3>
+                  <p>Online shopping platform with product catalog, cart system, user authentication, and payment integration.</p>
+                  <div class="project-tags">
+                    <span class="tag">React JS</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">Spring Boot</span>
+                    <span class="tag">PostgreSQL</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 3 -->
+              <div class="project-card reveal">
+                <div class="project-image">
+                  <div class="project-placeholder">
+                    <i class="fa-solid fa-newspaper"></i>
+                  </div>
+                  <div class="project-overlay">
+                    <div class="project-links">
+                      <a href="#" class="project-link" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                      <a href="#" class="project-link" title="Source Code"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>Portfolio Website</h3>
+                  <p>Modern personal portfolio with smooth animations, responsive design, and interactive UI components.</p>
+                  <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 4 -->
+              <div class="project-card reveal">
+                <div class="project-image">
+                  <div class="project-placeholder">
+                    <i class="fa-solid fa-list-check"></i>
+                  </div>
+                  <div class="project-overlay">
+                    <div class="project-links">
+                      <a href="#" class="project-link" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                      <a href="#" class="project-link" title="Source Code"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>Task Management App</h3>
+                  <p>Productivity tool for managing daily tasks with drag-and-drop, priority levels, and deadline tracking.</p>
+                  <div class="project-tags">
+                    <span class="tag">React JS</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">MongoDB</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+          <div class="section-inner">
+            <header class="section-header reveal">
+              <span class="section-tag">Say Hello</span>
+              <h2 class="section-heading">Get In Touch</h2>
+            </header>
+            <p class="contact-subtitle reveal">My inbox is always open. Whether you have a question or just want to say hello, I'll try my best to get back to you!</p>
+
+            <div class="contact-box">
+              <div class="contact-info reveal">
+                <div class="contact-info-item">
+                  <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                  <div>
+                    <h4>Phone</h4>
+                    <p>+91 7708765569</p>
+                  </div>
+                </div>
+                <div class="contact-info-item">
+                  <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                  <div>
+                    <h4>Email</h4>
+                    <p>navanee03092003@gmail.com</p>
+                  </div>
+                </div>
+                <div class="contact-info-item">
+                  <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div>
+                    <h4>Location</h4>
+                    <p>Chennai, India</p>
+                  </div>
+                </div>
+
+                <div class="social-links">
+                  <a href="https://github.com/" target="_blank" rel="noopener" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-link" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+              </div>
+
+              <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                  <input id="name" name="name" type="text" placeholder=" " required autocomplete="name" />
+                  <label for="name">Your Full Name</label>
+                </div>
+                <div class="form-group">
+                  <input id="mail" name="email" type="email" placeholder=" " required autocomplete="email" />
+                  <label for="mail">Your Email</label>
+                </div>
+                <div class="form-group">
+                  <textarea id="message" name="message" placeholder=" " required></textarea>
+                  <label for="message">Your Message</label>
+                </div>
+                <button type="submit" class="btn btn-primary-glow btn-submit" id="submitBtn">
+                  <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> Send Message</span>
+                  <span class="btn-loading" style="display:none;"><i class="fa-solid fa-spinner fa-spin"></i> Sending...</span>
+                </button>
+                <p class="form-status" id="formStatus"></p>
+              </form>
+            </div>
+          </div>
+
+          <footer class="site-footer">
+            <p>Designed & Built by <strong>Navaneethakrishnan</strong></p>
+            <p>Copyright &copy; 2026. All rights reserved.</p>
+          </footer>
+        </section>
+      </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTopBtn" title="Back to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Ambient Canvas -->
+    <canvas id="ambientCanvas"></canvas>
+
+    <script src="script.js"></script>
+  </body>
+</html>
