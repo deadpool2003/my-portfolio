@@ -26,53 +26,42 @@
     <div class="wrapper">
       <!-- Sidebar -->
       <div class="sidebar">
-        <div class="profile">
-          <img src="images/profile.jpg" alt="Navaneethakrishnan profile photo" class="profile-img" />
-          <div class="profile-content">
-            <h2 class="name text-white">Navaneethakrishnan</h2>
-            <span class="position text-dark">Full Stack Developer</span>
-          </div>
+        <div class="profile-mini">
+          <img src="images/profile.jpg" alt="Navaneethakrishnan profile photo" class="profile-img-mini" />
         </div>
 
         <ul class="menu">
           <li class="list active">
             <a href="#about" class="link">
-              <i class="fa-solid fa-user"></i>
-              <span>About Me</span>
+              <i class="fa-solid fa-house"></i>
+              <span class="tooltip">About Me</span>
             </a>
           </li>
           <li class="list">
             <a href="#education" class="link">
-              <i class="fa-solid fa-graduation-cap"></i>
-              <span>Education</span>
+              <i class="fa-regular fa-clock"></i>
+              <span class="tooltip">Education</span>
             </a>
           </li>
           <li class="list">
             <a href="#skills" class="link">
-              <i class="fa-solid fa-code"></i>
-              <span>Skills</span>
+              <i class="fa-regular fa-calendar-days"></i>
+              <span class="tooltip">Skills</span>
             </a>
           </li>
           <li class="list">
             <a href="#projects" class="link">
-              <i class="fa-solid fa-diagram-project"></i>
-              <span>Projects</span>
+              <i class="fa-regular fa-user"></i>
+              <span class="tooltip">Projects</span>
             </a>
           </li>
           <li class="list">
             <a href="#contact" class="link">
-              <i class="fa-solid fa-envelope"></i>
-              <span>Contact</span>
+              <i class="fa-solid fa-gear"></i>
+              <span class="tooltip">Contact</span>
             </a>
           </li>
         </ul>
-
-        <div class="sidebar-footer">
-          <a href="#contact" class="btn sidebar-btn">
-            <i class="fa-solid fa-paper-plane"></i>
-            <span>Let's Talk</span>
-          </a>
-        </div>
       </div>
 
       <!-- Main Content -->
@@ -441,16 +430,10 @@
 
           <footer class="site-footer">
             <p>Designed & Built by <strong>Navaneethakrishnan</strong></p>
-            <p>Copyright &copy; 2026. All rights reserved.</p>
           </footer>
         </section>
       </div>
     </div>
-
-    <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTopBtn" title="Back to top">
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
 
     <!-- Ambient Canvas -->
     <canvas id="ambientCanvas"></canvas>

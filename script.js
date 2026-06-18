@@ -8,7 +8,6 @@
   // ─── DOM REFERENCES ─────────────────────────────────
   const links = document.querySelectorAll('.list .link');
   const sections = document.querySelectorAll('section[id]');
-  const scrollTopBtn = document.getElementById('scrollTopBtn');
   const pageLoader = document.getElementById('pageLoader');
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
@@ -53,21 +52,6 @@
   }
 
   window.addEventListener('scroll', updateActiveLink, { passive: true });
-
-  // ─── SCROLL TO TOP ──────────────────────────────────
-  function toggleScrollTopBtn() {
-    if (window.scrollY > 400) {
-      scrollTopBtn.classList.add('visible');
-    } else {
-      scrollTopBtn.classList.remove('visible');
-    }
-  }
-
-  window.addEventListener('scroll', toggleScrollTopBtn, { passive: true });
-
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 
   // ─── BUTTON RIPPLE EFFECT ──────────────────────────
   document.querySelectorAll('.btn').forEach((btn) => {
@@ -284,7 +268,7 @@
         // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(168, 85, 247, ${p.opacity})`;
+        ctx.fillStyle = `rgba(249, 115, 22, ${p.opacity})`;
         ctx.fill();
 
         // Draw connections
@@ -298,7 +282,7 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(124, 58, 237, ${0.08 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(234, 88, 12, ${0.08 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
