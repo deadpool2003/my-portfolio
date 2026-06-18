@@ -1,0 +1,25 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient matching the White & Orange theme -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff8a3d" />
+      <stop offset="50%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    
+    <!-- Soft shadow for the 'N' letter to give it a 3D overlay effect -->
+    <filter id="logo-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#ea580c" flood-opacity="0.35" />
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Backdrop -->
+  <rect width="512" height="512" rx="144" fill="url(#bg-grad)" />
+
+  <!-- Subtle inner glow pattern -->
+  <rect x="16" y="16" width="480" height="480" rx="128" stroke="white" stroke-width="6" stroke-opacity="0.18" fill="none" />
+
+  <!-- Stylized Geometric 'N' -->
+  <path d="M150 150 H210 L302 305 V150 H362 V362 H302 L210 207 V362 H150 Z" fill="#FFFFFF" filter="url(#logo-shadow)" />
+</svg>

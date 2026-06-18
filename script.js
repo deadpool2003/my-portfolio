@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   PORTFOLIO — MAIN SCRIPT
+   PORTFOLIO — MAIN SCRIPT (Premium Redesign)
    ═══════════════════════════════════════════════════════════ */
 
 (function () {
@@ -16,10 +16,26 @@
   window.addEventListener('load', () => {
     setTimeout(() => {
       pageLoader.classList.add('hidden');
-      // Trigger initial reveals after loader hides
-      setTimeout(revealOnScroll, 300);
-    }, 600);
+      setTimeout(initRevealSystem, 200);
+      setTimeout(initWaveTimeline, 400);
+    }, 800);
   });
+
+  // ─── DYNAMIC GREETING ──────────────────────────────
+  const greetingEl = document.getElementById('dynamicGreeting');
+  if (greetingEl) {
+    const hour = new Date().getHours();
+    let greetText = 'Good Evening';
+    let greetEmoji = '🌙';
+    if (hour >= 5 && hour < 12) {
+      greetText = 'Good Morning';
+      greetEmoji = '☀️';
+    } else if (hour >= 12 && hour < 17) {
+      greetText = 'Good Afternoon';
+      greetEmoji = '🌤️';
+    }
+    greetingEl.textContent = `${greetEmoji} ${greetText}, I'm`;
+  }
 
   // ─── SMOOTH SCROLL NAVIGATION ───────────────────────
   links.forEach((link) => {
@@ -64,7 +80,7 @@
       ripple.style.left = x + 'px';
       ripple.style.top = y + 'px';
       this.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 800);
+      setTimeout(() => ripple.remove(), 700);
     });
   });
 
@@ -89,31 +105,38 @@
     if (isDeleting) {
       typewriterEl.textContent = currentRole.substring(0, charIndex - 1);
       charIndex--;
-      typeSpeed = 40;
+      typeSpeed = 35;
     } else {
       typewriterEl.textContent = currentRole.substring(0, charIndex + 1);
       charIndex++;
-      typeSpeed = 80;
+      typeSpeed = 75;
     }
 
     if (!isDeleting && charIndex === currentRole.length) {
-      typeSpeed = 2000; // Pause at end
+      typeSpeed = 2000;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       roleIndex = (roleIndex + 1) % roles.length;
-      typeSpeed = 400; // Pause before next word
+      typeSpeed = 350;
     }
 
     setTimeout(typewrite, typeSpeed);
   }
 
-  // Start typewriter after loader
   setTimeout(typewrite, 1200);
 
-  // ─── SCROLL REVEAL (IntersectionObserver) ──────────
-  function revealOnScroll() {
+  // ─── SCROLL REVEAL SYSTEM (IntersectionObserver) ───
+  function initRevealSystem() {
     const reveals = document.querySelectorAll('.reveal');
+
+    // Add directional classes for wave cards
+    document.querySelectorAll('.wave-left.reveal').forEach(el => {
+      el.classList.add('slide-left');
+    });
+    document.querySelectorAll('.wave-right.reveal').forEach(el => {
+      el.classList.add('slide-right');
+    });
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -121,16 +144,16 @@
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
 
-            // Animate skill bars if inside skills section
+            // Animate skill bars
             const skillFills = entry.target.querySelectorAll('.skill-fill');
             skillFills.forEach((fill) => {
               const width = fill.getAttribute('data-width');
               setTimeout(() => {
                 fill.style.width = width + '%';
-              }, 200);
+              }, 150);
             });
 
-            // Animate stat numbers if inside about section
+            // Animate stat numbers
             const statNumbers = entry.target.querySelectorAll('.stat-number');
             statNumbers.forEach((num) => {
               animateCounter(num);
@@ -141,8 +164,8 @@
         });
       },
       {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px',
       }
     );
 
@@ -152,13 +175,13 @@
   // ─── COUNTER ANIMATION ────────────────────────────
   function animateCounter(el) {
     const target = parseInt(el.getAttribute('data-count'), 10);
-    const duration = 1500;
+    if (isNaN(target)) return;
+    const duration = 1200;
     const start = performance.now();
 
     function update(now) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       el.textContent = Math.floor(eased * target);
 
@@ -172,6 +195,80 @@
     requestAnimationFrame(update);
   }
 
+  // ─── WAVE TIMELINE ─────────────────────────────────
+  function initWaveTimeline() {
+    const svg = document.getElementById('waveSvg');
+    const path = document.getElementById('wavePath');
+    const timeline = document.getElementById('waveTimeline');
+    if (!svg || !path || !timeline) return;
+
+    // Only draw SVG path on desktop (> 1024px)
+    if (window.innerWidth <= 1024) return;
+
+    const cards = timeline.querySelectorAll('.wave-card');
+    if (cards.length === 0) return;
+
+    // Get positions of nodes to draw the curve through
+    const timelineRect = timeline.getBoundingClientRect();
+    const points = [];
+
+    cards.forEach((card) => {
+      const node = card.querySelector('.wave-node');
+      if (!node) return;
+      const nodeRect = node.getBoundingClientRect();
+      points.push({
+        x: nodeRect.left + nodeRect.width / 2 - timelineRect.left,
+        y: nodeRect.top + nodeRect.height / 2 - timelineRect.top,
+      });
+    });
+
+    if (points.length < 2) return;
+
+    // Build an SVG path (smooth cubic bezier through points)
+    let d = `M ${points[0].x} ${points[0].y}`;
+    for (let i = 0; i < points.length - 1; i++) {
+      const p0 = points[i];
+      const p1 = points[i + 1];
+      const midY = (p0.y + p1.y) / 2;
+      d += ` C ${p0.x} ${midY}, ${p1.x} ${midY}, ${p1.x} ${p1.y}`;
+    }
+
+    path.setAttribute('d', d);
+
+    // Set SVG dimensions
+    svg.style.width = timelineRect.width + 'px';
+    svg.style.height = timelineRect.height + 'px';
+    svg.style.left = '0';
+    svg.style.transform = 'none';
+
+    // Animate the path drawing on scroll
+    const pathLength = path.getTotalLength();
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength;
+
+    const waveObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            path.style.transition = 'stroke-dashoffset 2s cubic-bezier(0.16, 1, 0.3, 1)';
+            path.style.strokeDashoffset = '0';
+            waveObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    waveObserver.observe(timeline);
+  }
+
+  // Re-draw wave on resize (debounced)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(initWaveTimeline, 300);
+  });
+
   // ─── CONTACT FORM HANDLING ─────────────────────────
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
@@ -181,15 +278,12 @@
       const btnText = submitBtn.querySelector('.btn-text');
       const btnLoading = submitBtn.querySelector('.btn-loading');
 
-      // Show loading state
       btnText.style.display = 'none';
       btnLoading.style.display = 'inline-flex';
       submitBtn.disabled = true;
 
-      // Collect form data
       const formData = new FormData(contactForm);
 
-      // Attempt Formspree submission
       fetch(contactForm.action, {
         method: 'POST',
         body: formData,
@@ -205,7 +299,6 @@
           }
         })
         .catch(() => {
-          // Fallback: show a friendly message since Formspree ID needs to be configured
           formStatus.textContent =
             '✓ Thanks! Please configure Formspree ID to enable email delivery.';
           formStatus.className = 'form-status success';
@@ -230,6 +323,8 @@
     const ctx = canvas.getContext('2d');
     let particles = [];
     let animationId;
+    let mouseX = -1;
+    let mouseY = -1;
 
     function resizeCanvas() {
       canvas.width = window.innerWidth;
@@ -238,15 +333,15 @@
 
     function createParticles() {
       particles = [];
-      const count = Math.min(Math.floor((canvas.width * canvas.height) / 25000), 60);
+      const count = Math.min(Math.floor((canvas.width * canvas.height) / 30000), 45);
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          radius: Math.random() * 1.5 + 0.5,
-          opacity: Math.random() * 0.4 + 0.1,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+          radius: Math.random() * 1.8 + 0.5,
+          opacity: Math.random() * 0.35 + 0.08,
         });
       }
     }
@@ -255,34 +350,45 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p, i) => {
-        // Move
         p.x += p.vx;
         p.y += p.vy;
 
-        // Wrap around
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        // Draw particle
+        // Mouse interaction: gently repel
+        if (mouseX > 0 && mouseY > 0) {
+          const dx = p.x - mouseX;
+          const dy = p.y - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            p.vx += (dx / dist) * 0.03;
+            p.vy += (dy / dist) * 0.03;
+          }
+        }
+
+        // Dampen velocity
+        p.vx *= 0.999;
+        p.vy *= 0.999;
+
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(249, 115, 22, ${p.opacity})`;
         ctx.fill();
 
-        // Draw connections
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p.x - p2.x;
           const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 120) {
+          if (dist < 110) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(234, 88, 12, ${0.08 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(234, 88, 12, ${0.06 * (1 - dist / 110)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -292,7 +398,17 @@
       animationId = requestAnimationFrame(drawParticles);
     }
 
-    // Respect reduced motion
+    // Track mouse for interactive particles
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    document.addEventListener('mouseleave', () => {
+      mouseX = -1;
+      mouseY = -1;
+    });
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (!prefersReducedMotion.matches) {
       resizeCanvas();
@@ -305,7 +421,6 @@
       });
     }
 
-    // Pause when tab is not visible
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         cancelAnimationFrame(animationId);
@@ -320,6 +435,15 @@
   if (hireMeBtn) {
     hireMeBtn.addEventListener('click', () => {
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // ─── VIEW PROJECTS BUTTON ──────────────────────────
+  const viewProjectsBtn = document.getElementById('viewProjectsBtn');
+  if (viewProjectsBtn) {
+    viewProjectsBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
     });
   }
 
