@@ -10,7 +10,7 @@
     <meta property="og:title" content="Navaneethakrishnan | Full Stack Developer" />
     <meta property="og:description" content="Passionate Java Full Stack Developer building dynamic, responsive web applications." />
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg" />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -18,8 +18,8 @@
     <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
       <div class="loader-content">
-        <div class="loader-spinner"></div>
-        <p class="loader-text">Loading Portfolio...</p>
+        <div class="loader-logo">N</div>
+        <div class="loader-bar"><div class="loader-fill"></div></div>
       </div>
     </div>
 
@@ -39,25 +39,25 @@
           </li>
           <li class="list">
             <a href="#education" class="link">
-              <i class="fa-regular fa-clock"></i>
+              <i class="fa-solid fa-graduation-cap"></i>
               <span class="tooltip">Education</span>
             </a>
           </li>
           <li class="list">
             <a href="#skills" class="link">
-              <i class="fa-regular fa-calendar-days"></i>
+              <i class="fa-solid fa-code"></i>
               <span class="tooltip">Skills</span>
             </a>
           </li>
           <li class="list">
             <a href="#projects" class="link">
-              <i class="fa-regular fa-user"></i>
+              <i class="fa-solid fa-diagram-project"></i>
               <span class="tooltip">Projects</span>
             </a>
           </li>
           <li class="list">
             <a href="#contact" class="link">
-              <i class="fa-solid fa-gear"></i>
+              <i class="fa-solid fa-envelope"></i>
               <span class="tooltip">Contact</span>
             </a>
           </li>
@@ -66,11 +66,16 @@
 
       <!-- Main Content -->
       <div class="content">
-        <!-- About / Hero Section -->
+        <!-- Hero / About Section -->
         <section id="about">
+          <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+          </div>
           <div class="about-inner">
             <div class="about-text reveal">
-              <span class="greeting">Hello, I'm</span>
+              <span class="greeting" id="dynamicGreeting">Hello, I'm</span>
               <h1 class="hero-name">S Navaneethakrishnan</h1>
               <div class="typewriter-wrapper">
                 <span class="typewriter-prefix">I'm a </span>
@@ -78,29 +83,18 @@
                 <span class="typewriter-cursor">|</span>
               </div>
               <p class="about-description">
-                Passionate Java Full Stack Web Developer with a strong foundation in building dynamic and responsive web applications. Proficient in Java, Spring Boot, React JS, and databases like PostgreSQL. Hands-on experience in developing RESTful APIs and integrating frontend and backend components seamlessly. Dedicated to solving real-world problems and delivering efficient, user-friendly web solutions.
+                Passionate Java Full Stack Web Developer with a strong foundation in building dynamic and responsive web applications. Proficient in Java, Spring Boot, React JS, and databases like PostgreSQL. Dedicated to solving real-world problems and delivering efficient, user-friendly web solutions.
               </p>
               <div class="about-cta">
                 <button class="btn btn-primary-glow" id="hireMeBtn">
                   <i class="fa-solid fa-briefcase"></i> Hire Me
                 </button>
-                <a href="#" class="btn btn-outline" id="resumeBtn">
-                  <i class="fa-solid fa-download"></i> Download Resume
+                <a href="#projects" class="btn btn-outline" id="viewProjectsBtn">
+                  <i class="fa-solid fa-eye"></i> View Projects
                 </a>
-              </div>
-              <div class="about-stats">
-                <div class="stat-item reveal-delay-1">
-                  <span class="stat-number" data-count="5">0</span><span class="stat-plus">+</span>
-                  <span class="stat-label">Projects</span>
-                </div>
-                <div class="stat-item reveal-delay-2">
-                  <span class="stat-number" data-count="8">0</span><span class="stat-plus">+</span>
-                  <span class="stat-label">Technologies</span>
-                </div>
-                <div class="stat-item reveal-delay-3">
-                  <span class="stat-number" data-count="1">0</span><span class="stat-plus">+</span>
-                  <span class="stat-label">Years Learning</span>
-                </div>
+                <a href="#" class="btn btn-ghost" id="resumeBtn">
+                  <i class="fa-solid fa-download"></i> Resume
+                </a>
               </div>
             </div>
             <div class="about-image reveal">
@@ -108,59 +102,95 @@
                 <img src="./images/img.jpg" alt="Navaneethakrishnan" />
                 <div class="image-glow"></div>
               </div>
+              <div class="quick-stats">
+                <div class="stat-card reveal-delay-1">
+                  <span class="stat-number" data-count="5">0</span><span class="stat-plus">+</span>
+                  <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-card reveal-delay-2">
+                  <span class="stat-number" data-count="8">0</span><span class="stat-plus">+</span>
+                  <span class="stat-label">Technologies</span>
+                </div>
+                <div class="stat-card reveal-delay-3">
+                  <span class="stat-number" data-count="1">0</span><span class="stat-plus">+</span>
+                  <span class="stat-label">Years Learning</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- Education Section -->
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
+
+        <!-- Education Section — Wave Timeline -->
         <section id="education">
           <div class="section-inner">
             <header class="section-header reveal">
               <span class="section-tag">My Journey</span>
               <h2 class="section-heading">Education</h2>
             </header>
-            <div class="timeline-items">
-              <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2017 - 2018</div>
-                <div class="timeline-content">
-                  <div class="timeline-icon"><i class="fa-solid fa-school"></i></div>
+
+            <div class="wave-timeline" id="waveTimeline">
+              <!-- SVG wave path is drawn by JS -->
+              <svg class="wave-svg" id="waveSvg" preserveAspectRatio="none">
+                <path class="wave-path" id="wavePath" fill="none" stroke="url(#waveGrad)" stroke-width="3" stroke-linecap="round"></path>
+                <defs>
+                  <linearGradient id="waveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#f97316" />
+                    <stop offset="50%" stop-color="#ff8a3d" />
+                    <stop offset="100%" stop-color="#ea580c" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <!-- Education Card 1 — Left -->
+              <div class="wave-card wave-left reveal" data-index="0">
+                <div class="wave-node">
+                  <div class="wave-node-inner"><i class="fa-solid fa-school"></i></div>
+                  <div class="wave-node-ring"></div>
+                </div>
+                <div class="wave-card-content glass-card">
+                  <span class="wave-year">2017 — 2018</span>
                   <h3>SSLC</h3>
-                  <p class="timeline-place">Government Boys Higher Secondary School</p>
-                  <div class="timeline-badge">
-                    <i class="fa-solid fa-chart-line"></i> 85.6%
-                  </div>
+                  <p class="wave-institution">Government Boys Higher Secondary School</p>
+                  <div class="wave-score"><i class="fa-solid fa-chart-line"></i> 85.6%</div>
                 </div>
               </div>
 
-              <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2019 - 2020</div>
-                <div class="timeline-content">
-                  <div class="timeline-icon"><i class="fa-solid fa-book-open"></i></div>
+              <!-- Education Card 2 — Right -->
+              <div class="wave-card wave-right reveal" data-index="1">
+                <div class="wave-node">
+                  <div class="wave-node-inner"><i class="fa-solid fa-book-open"></i></div>
+                  <div class="wave-node-ring"></div>
+                </div>
+                <div class="wave-card-content glass-card">
+                  <span class="wave-year">2019 — 2020</span>
                   <h3>HSC</h3>
-                  <p class="timeline-place">Government Boys Higher Secondary School</p>
-                  <div class="timeline-badge">
-                    <i class="fa-solid fa-chart-line"></i> 69.6%
-                  </div>
+                  <p class="wave-institution">Government Boys Higher Secondary School</p>
+                  <div class="wave-score"><i class="fa-solid fa-chart-line"></i> 69.6%</div>
                 </div>
               </div>
 
-              <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2020 - 2024</div>
-                <div class="timeline-content">
-                  <div class="timeline-icon"><i class="fa-solid fa-user-graduate"></i></div>
+              <!-- Education Card 3 — Left -->
+              <div class="wave-card wave-left reveal" data-index="2">
+                <div class="wave-node">
+                  <div class="wave-node-inner"><i class="fa-solid fa-user-graduate"></i></div>
+                  <div class="wave-node-ring"></div>
+                </div>
+                <div class="wave-card-content glass-card">
+                  <span class="wave-year">2020 — 2024</span>
                   <h3>B.E Computer Science and Engineering</h3>
-                  <p class="timeline-place">University College of Engineering, BIT Campus</p>
-                  <div class="timeline-badge">
-                    <i class="fa-solid fa-chart-line"></i> 76.1%
-                  </div>
+                  <p class="wave-institution">University College of Engineering, BIT Campus</p>
+                  <div class="wave-score"><i class="fa-solid fa-chart-line"></i> 76.1%</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
 
         <!-- Skills Section -->
         <section id="skills">
@@ -176,27 +206,27 @@
                 <h3 class="category-title"><i class="fa-solid fa-palette"></i> Frontend</h3>
                 <div class="skills-grid">
                   <div class="skill-card">
-                    <i class="fa-brands fa-html5"></i>
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-html5"></i></div>
                     <span>HTML5</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
                   </div>
                   <div class="skill-card">
-                    <i class="fa-brands fa-css3-alt"></i>
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-css3-alt"></i></div>
                     <span>CSS3</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
                   </div>
                   <div class="skill-card">
-                    <i class="fa-brands fa-js"></i>
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-js"></i></div>
                     <span>JavaScript</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
                   </div>
                   <div class="skill-card">
-                    <i class="fa-brands fa-react"></i>
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-react"></i></div>
                     <span>React JS</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
                   </div>
                   <div class="skill-card">
-                    <i class="fa-brands fa-react"></i>
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-react"></i></div>
                     <span>Next.js</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
                   </div>
@@ -208,17 +238,17 @@
                 <h3 class="category-title"><i class="fa-solid fa-server"></i> Backend</h3>
                 <div class="skills-grid">
                   <div class="skill-card">
-                    <i class="fa-brands fa-java"></i>
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-java"></i></div>
                     <span>Java</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
                   </div>
                   <div class="skill-card">
-                    <i class="fa-solid fa-leaf"></i>
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-leaf"></i></div>
                     <span>Spring Boot</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
                   </div>
                   <div class="skill-card">
-                    <i class="fa-solid fa-plug"></i>
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-plug"></i></div>
                     <span>REST APIs</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
                   </div>
@@ -230,22 +260,22 @@
                 <h3 class="category-title"><i class="fa-solid fa-database"></i> Database & Tools</h3>
                 <div class="skills-grid">
                   <div class="skill-card">
-                    <i class="fa-solid fa-database"></i>
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-database"></i></div>
                     <span>PostgreSQL</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
                   </div>
                   <div class="skill-card">
-                    <i class="fa-brands fa-git-alt"></i>
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-git-alt"></i></div>
                     <span>Git</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
                   </div>
                   <div class="skill-card">
-                    <i class="fa-brands fa-github"></i>
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-github"></i></div>
                     <span>GitHub</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
                   </div>
                   <div class="skill-card">
-                    <i class="fa-solid fa-terminal"></i>
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-terminal"></i></div>
                     <span>VS Code</span>
                     <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
                   </div>
@@ -254,6 +284,9 @@
             </div>
           </div>
         </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
 
         <!-- Projects Section -->
         <section id="projects">
@@ -364,6 +397,9 @@
             </div>
           </div>
         </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
 
         <!-- Contact Section -->
         <section id="contact">
