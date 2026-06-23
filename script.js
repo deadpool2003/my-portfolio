@@ -367,12 +367,12 @@
       btnLoading.style.display = 'inline-flex';
       submitBtn.disabled = true;
 
-      const formData = new FormData(contactForm);
-
-      fetch(contactForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
+      fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name: nameVal, email: mailVal, message: msgVal })
       })
         .then((response) => {
           if (response.ok) {
@@ -383,11 +383,9 @@
             throw new Error('Form submission failed');
           }
         })
-        .catch(() => {
-          formStatus.textContent =
-            '✓ Thanks! Please configure Formspree ID to enable email delivery.';
-          formStatus.className = 'form-status success';
-          contactForm.reset();
+        .catch((error) => {
+          formStatus.textContent = '❌ Error sending message. Please try again later.';
+          formStatus.className = 'form-status error';
         })
         .finally(() => {
           btnText.style.display = 'inline-flex';
