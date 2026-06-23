@@ -1045,6 +1045,9 @@ body {
   flex-shrink: 0;
   overflow: hidden;
   background: var(--gradient-soft);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .project-placeholder-lg {
@@ -1608,11 +1611,15 @@ body {
 
   .slider-track {
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+    transform: none !important;
   }
 
   .project-slide {
     flex: none;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
   }
 
   .slider-arrow {
