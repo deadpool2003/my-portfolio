@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- Page Loader -->
+
+    <!-- ═══════ PAGE LOADER ═══════ -->
     <div class="page-loader" id="pageLoader">
       <div class="loader-content">
         <div class="loader-logo">N</div>
@@ -23,413 +24,362 @@
       </div>
     </div>
 
+    <!-- ═══════ MOBILE NAV TOGGLE ═══════ -->
+    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars" id="mobileNavIcon"></i>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <div class="wrapper">
-      <!-- Sidebar -->
+
+      <!-- ═══════════════════════════════════════════════════
+           SIDEBAR — Fixed Left Navigation
+           ═══════════════════════════════════════════════════ -->
       <nav class="sidebar" id="sidebar">
-        <div class="profile-mini">
-          <img src="images/profile.jpg" alt="Navaneethakrishnan profile photo" class="profile-img-mini" />
+        <a href="#" class="sidebar-logo">N</a>
+
+        <div class="sidebar-nav">
+          <a href="#about" class="nav-item active" data-section="about">
+            <i class="fa-solid fa-user"></i>
+            <span class="nav-tooltip">About</span>
+          </a>
+          <a href="#skills" class="nav-item" data-section="skills">
+            <i class="fa-solid fa-code"></i>
+            <span class="nav-tooltip">Skills</span>
+          </a>
+          <a href="#projects" class="nav-item" data-section="projects">
+            <i class="fa-solid fa-diagram-project"></i>
+            <span class="nav-tooltip">Projects</span>
+          </a>
+          <a href="#education" class="nav-item" data-section="education">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span class="nav-tooltip">Education</span>
+          </a>
+          <a href="#contact" class="nav-item" data-section="contact">
+            <i class="fa-solid fa-envelope"></i>
+            <span class="nav-tooltip">Contact</span>
+          </a>
         </div>
 
-        <ul class="menu">
-          <li class="list active" data-section="hero">
-            <a href="#hero" class="link">
-              <i class="fa-solid fa-house"></i>
-              <span class="tooltip">Home</span>
-            </a>
-          </li>
-          <li class="list" data-section="about">
-            <a href="#about" class="link">
-              <i class="fa-solid fa-user"></i>
-              <span class="tooltip">About</span>
-            </a>
-          </li>
-          <li class="list" data-section="skills">
-            <a href="#skills" class="link">
-              <i class="fa-solid fa-code"></i>
-              <span class="tooltip">Skills</span>
-            </a>
-          </li>
-          <li class="list" data-section="education">
-            <a href="#education" class="link">
-              <i class="fa-solid fa-graduation-cap"></i>
-              <span class="tooltip">Education</span>
-            </a>
-          </li>
-          <li class="list" data-section="projects">
-            <a href="#projects" class="link">
-              <i class="fa-solid fa-diagram-project"></i>
-              <span class="tooltip">Projects</span>
-            </a>
-          </li>
-          <li class="list" data-section="contact">
-            <a href="#contact" class="link">
-              <i class="fa-solid fa-envelope"></i>
-              <span class="tooltip">Contact</span>
-            </a>
-          </li>
-        </ul>
+        <div class="sidebar-socials">
+          <a href="https://github.com/" target="_blank" rel="noopener" class="sidebar-social-link" title="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" class="sidebar-social-link" title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" class="sidebar-social-link" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener" class="sidebar-social-link" title="X / Twitter">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
       </nav>
 
-      <!-- Main Content — Scroll Snap Container -->
-      <main class="content" id="panelContainer">
+      <!-- ═══════════════════════════════════════════════════
+           MAIN BODY — Identity + Content
+           ═══════════════════════════════════════════════════ -->
+      <div class="main-body">
 
-        <!-- ═══════ PANEL 1: HERO ═══════ -->
-        <section class="panel" id="hero">
-          <div class="hero-bg-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
+        <!-- ─── STICKY IDENTITY PANEL ───────────────── -->
+        <aside class="identity-panel" id="identityPanel">
+          <div class="identity-decoration"></div>
+          <div class="identity-decoration-2"></div>
+
+          <span class="identity-greeting" id="dynamicGreeting">Hello, I'm</span>
+          <h1 class="identity-name">
+            S Navaneetha<span class="accent">krishnan</span>
+          </h1>
+          <div class="identity-role">
+            <span>I'm a </span>
+            <span class="typewriter-text" id="typewriter"></span>
+            <span class="typewriter-cursor">|</span>
           </div>
-          <div class="panel-inner hero-inner">
-            <span class="greeting" id="dynamicGreeting">Hello, I'm</span>
-            <h1 class="hero-name">S Navaneethakrishnan</h1>
-            <div class="typewriter-wrapper">
-              <span class="typewriter-prefix">I'm a </span>
-              <span class="typewriter-text" id="typewriter"></span>
-              <span class="typewriter-cursor">|</span>
-            </div>
-            <p class="hero-tagline">Building dynamic & responsive web solutions with Java, Spring Boot, and React.</p>
-            <a href="#contact" class="btn btn-primary-glow btn-hero" id="heroCta">
-              <i class="fa-solid fa-paper-plane"></i> Let's Talk
+          <p class="identity-tagline">
+            Crafting performant full-stack applications with Java, Spring Boot & React — turning complex problems into elegant, user-first solutions.
+          </p>
+          <div class="identity-ctas">
+            <a href="#projects" class="btn btn-primary" id="ctaProjects">
+              <i class="fa-solid fa-rocket"></i> View Projects
+            </a>
+            <a href="#contact" class="btn btn-secondary" id="ctaContact">
+              <i class="fa-solid fa-paper-plane"></i> Contact Me
             </a>
           </div>
-          <div class="scroll-hint" id="scrollHint">
-            <span>Scroll</span>
-            <div class="scroll-hint-line"></div>
-          </div>
-        </section>
+        </aside>
 
-        <!-- ═══════ PANEL 2: ABOUT ═══════ -->
-        <section class="panel" id="about">
-          <div class="panel-inner">
-            <div class="about-card">
-              <div class="about-card-left">
-                <div class="about-image-frame">
-                  <img src="./images/img.jpg" alt="Navaneethakrishnan" />
-                  <div class="about-image-glow"></div>
+        <!-- ─── SCROLLABLE CONTENT PANEL ────────────── -->
+        <main class="content-panel" id="contentPanel">
+
+          <!-- ═══════ ABOUT ═══════ -->
+          <section class="section" id="about">
+            <div class="about-content">
+              <span class="section-tag">About Me</span>
+              <h2 class="section-heading reveal-up">Who I Am</h2>
+              <p class="about-text" id="aboutText">
+                Passionate <span class="highlight">Java Full Stack Web Developer</span> with a strong foundation in building <span class="highlight">dynamic</span> and <span class="highlight">responsive</span> web applications. Proficient in <span class="highlight">Java</span>, <span class="highlight">Spring Boot</span>, <span class="highlight">React JS</span>, and databases like <span class="highlight">PostgreSQL</span>. Dedicated to solving real-world problems and delivering efficient, <span class="highlight">user-friendly</span> web solutions.
+              </p>
+              <div class="about-stats">
+                <div class="stat-card">
+                  <span class="stat-number" data-count="5">0</span><span class="stat-suffix">+</span>
+                  <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-number" data-count="8">0</span><span class="stat-suffix">+</span>
+                  <span class="stat-label">Technologies</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-number" data-count="1">0</span><span class="stat-suffix">+ yr</span>
+                  <span class="stat-label">Experience</span>
                 </div>
               </div>
-              <div class="about-card-right">
-                <span class="section-tag">About Me</span>
-                <h2 class="section-heading">Who I Am</h2>
-                <p class="about-bio">
-                  Passionate Java Full Stack Web Developer with a strong foundation in building dynamic and responsive web applications. Proficient in Java, Spring Boot, React JS, and databases like PostgreSQL. Dedicated to solving real-world problems and delivering efficient, user-friendly web solutions.
-                </p>
-                <div class="about-stats">
-                  <div class="about-stat-card">
-                    <span class="stat-number" data-count="5">0</span><span class="stat-plus">+</span>
-                    <span class="stat-label">Projects</span>
+            </div>
+          </section>
+
+          <!-- ═══════ SKILLS ═══════ -->
+          <section class="section" id="skills">
+            <span class="section-tag">What I Know</span>
+            <h2 class="section-heading reveal-up">Skills & Technologies</h2>
+            <div class="skills-grid">
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-brands fa-html5"></i></div>
+                <h4>HTML5</h4>
+                <p>Semantic markup & accessibility</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-brands fa-css3-alt"></i></div>
+                <h4>CSS3</h4>
+                <p>Responsive layouts & animations</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-brands fa-js"></i></div>
+                <h4>JavaScript</h4>
+                <p>ES6+ & DOM manipulation</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-brands fa-react"></i></div>
+                <h4>React JS</h4>
+                <p>Component-based UI development</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-brands fa-react"></i></div>
+                <h4>Next.js</h4>
+                <p>Server-side rendering & routing</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-brands fa-java"></i></div>
+                <h4>Java</h4>
+                <p>OOP & enterprise applications</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-solid fa-leaf"></i></div>
+                <h4>Spring Boot</h4>
+                <p>REST APIs & microservices</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-solid fa-plug"></i></div>
+                <h4>REST APIs</h4>
+                <p>Design, build & integrate APIs</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-solid fa-database"></i></div>
+                <h4>PostgreSQL</h4>
+                <p>Relational database management</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-brands fa-git-alt"></i></div>
+                <h4>Git</h4>
+                <p>Version control & collaboration</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-brands fa-github"></i></div>
+                <h4>GitHub</h4>
+                <p>Repository hosting & CI/CD</p>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card-icon"><i class="fa-solid fa-terminal"></i></div>
+                <h4>VS Code</h4>
+                <p>IDE & productivity tools</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══════ PROJECTS — Sticky Showcase ═══════ -->
+          <section class="section" id="projects">
+            <span class="section-tag">My Work</span>
+            <h2 class="section-heading reveal-up">Featured Projects</h2>
+            <div class="projects-showcase">
+              <!-- Left — Project List -->
+              <div class="project-list" id="projectList">
+                <div class="project-list-item active" data-project="0">
+                  <span class="project-list-number">Project 01</span>
+                  <h3 class="project-list-title">HRMS — Human Resource Management</h3>
+                  <p class="project-list-subtitle">Full-featured HRMS with role-based access, leave management, and employee dashboards.</p>
+                </div>
+                <div class="project-list-item" data-project="1">
+                  <span class="project-list-number">Project 02</span>
+                  <h3 class="project-list-title">E-Commerce Web Application</h3>
+                  <p class="project-list-subtitle">Online shopping platform with product catalog, cart system, and payment integration.</p>
+                </div>
+                <div class="project-list-item" data-project="2">
+                  <span class="project-list-number">Project 03</span>
+                  <h3 class="project-list-title">Portfolio Website</h3>
+                  <p class="project-list-subtitle">Modern personal portfolio with smooth animations, responsive design, and interactive UI.</p>
+                </div>
+                <div class="project-list-item" data-project="3">
+                  <span class="project-list-number">Project 04</span>
+                  <h3 class="project-list-title">Task Management App</h3>
+                  <p class="project-list-subtitle">Productivity tool for managing tasks with drag-and-drop, priorities, and deadlines.</p>
+                </div>
+              </div>
+
+              <!-- Right — Sticky Preview -->
+              <div class="project-preview" id="projectPreview">
+                <div class="project-preview-visual">
+                  <i class="fa-solid fa-users-gear project-preview-icon" id="previewIcon"></i>
+                </div>
+                <div class="project-preview-body">
+                  <h3 class="project-preview-title" id="previewTitle">HRMS — Human Resource Management</h3>
+                  <p class="project-preview-desc" id="previewDesc">Full-featured HRMS with role-based access, leave management, attendance tracking, and employee dashboards.</p>
+                  <div class="project-preview-tags" id="previewTags">
+                    <span class="project-tag">Next.js</span>
+                    <span class="project-tag">Spring Boot</span>
+                    <span class="project-tag">PostgreSQL</span>
+                    <span class="project-tag">REST API</span>
                   </div>
-                  <div class="about-stat-card">
-                    <span class="stat-number" data-count="8">0</span><span class="stat-plus">+</span>
-                    <span class="stat-label">Technologies</span>
-                  </div>
-                  <div class="about-stat-card">
-                    <span class="stat-number" data-count="1">0</span><span class="stat-plus">+ yr</span>
-                    <span class="stat-label">Experience</span>
+                  <div class="project-preview-actions">
+                    <a href="#" class="project-action-btn primary" id="previewDemo">
+                      <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                    </a>
+                    <a href="#" class="project-action-btn secondary" id="previewCode">
+                      <i class="fa-brands fa-github"></i> Source Code
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <!-- ═══════ PANEL 3: SKILLS ═══════ -->
-        <section class="panel" id="skills">
-          <div class="panel-inner">
-            <header class="section-header">
-              <span class="section-tag">What I Know</span>
-              <h2 class="section-heading">Skills & Technologies</h2>
-            </header>
-            <div class="skills-tile-grid">
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-brands fa-html5"></i></div>
-                <span>HTML5</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-brands fa-css3-alt"></i></div>
-                <span>CSS3</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-brands fa-js"></i></div>
-                <span>JavaScript</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-brands fa-react"></i></div>
-                <span>React JS</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-brands fa-react"></i></div>
-                <span>Next.js</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-brands fa-java"></i></div>
-                <span>Java</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-solid fa-leaf"></i></div>
-                <span>Spring Boot</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-solid fa-plug"></i></div>
-                <span>REST APIs</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-solid fa-database"></i></div>
-                <span>PostgreSQL</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-brands fa-git-alt"></i></div>
-                <span>Git</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-brands fa-github"></i></div>
-                <span>GitHub</span>
-              </div>
-              <div class="skill-tile">
-                <div class="skill-tile-icon"><i class="fa-solid fa-terminal"></i></div>
-                <span>VS Code</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ═══════ PANEL 4: EDUCATION ═══════ -->
-        <section class="panel" id="education">
-          <div class="panel-inner">
-            <header class="section-header">
-              <span class="section-tag">My Journey</span>
-              <h2 class="section-heading">Education</h2>
-            </header>
-            <div class="edu-timeline" id="eduTimeline">
+          <!-- ═══════ EDUCATION — Animated Timeline ═══════ -->
+          <section class="section" id="education">
+            <span class="section-tag">My Journey</span>
+            <h2 class="section-heading reveal-up">Education</h2>
+            <div class="timeline" id="timeline">
               <!-- Item 1 -->
               <div class="timeline-item">
-                <div class="timeline-marker">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-line"></div>
-                </div>
-                <div class="timeline-content">
-                  <div class="edu-header">
-                    <div class="edu-icon"><i class="fa-solid fa-school"></i></div>
-                    <span class="edu-year">2017 — 2018</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                  <div class="timeline-header">
+                    <div class="timeline-icon"><i class="fa-solid fa-school"></i></div>
+                    <span class="timeline-year">2017 — 2018</span>
                   </div>
                   <h3>SSLC</h3>
-                  <p class="edu-institution">Government Boys Higher Secondary School</p>
-                  <div class="edu-score"><i class="fa-solid fa-chart-line"></i> 85.6%</div>
+                  <p class="timeline-institution">Government Boys Higher Secondary School</p>
+                  <span class="timeline-score"><i class="fa-solid fa-chart-line"></i> 85.6%</span>
                 </div>
               </div>
               <!-- Item 2 -->
               <div class="timeline-item">
-                <div class="timeline-marker">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-line"></div>
-                </div>
-                <div class="timeline-content">
-                  <div class="edu-header">
-                    <div class="edu-icon"><i class="fa-solid fa-book-open"></i></div>
-                    <span class="edu-year">2019 — 2020</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                  <div class="timeline-header">
+                    <div class="timeline-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <span class="timeline-year">2019 — 2020</span>
                   </div>
                   <h3>HSC</h3>
-                  <p class="edu-institution">Government Boys Higher Secondary School</p>
-                  <div class="edu-score"><i class="fa-solid fa-chart-line"></i> 69.6%</div>
+                  <p class="timeline-institution">Government Boys Higher Secondary School</p>
+                  <span class="timeline-score"><i class="fa-solid fa-chart-line"></i> 69.6%</span>
                 </div>
               </div>
               <!-- Item 3 -->
               <div class="timeline-item">
-                <div class="timeline-marker">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-line"></div>
-                </div>
-                <div class="timeline-content">
-                  <div class="edu-header">
-                    <div class="edu-icon"><i class="fa-solid fa-user-graduate"></i></div>
-                    <span class="edu-year">2020 — 2024</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                  <div class="timeline-header">
+                    <div class="timeline-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                    <span class="timeline-year">2020 — 2024</span>
                   </div>
                   <h3>B.E Computer Science and Engineering</h3>
-                  <p class="edu-institution">University College of Engineering, BIT Campus</p>
-                  <div class="edu-score"><i class="fa-solid fa-chart-line"></i> 76.1%</div>
+                  <p class="timeline-institution">University College of Engineering, BIT Campus</p>
+                  <span class="timeline-score"><i class="fa-solid fa-chart-line"></i> 76.1%</span>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <!-- ═══════ PANEL 5: PROJECTS ═══════ -->
-        <section class="panel" id="projects">
-          <div class="panel-inner">
-            <header class="section-header">
-              <span class="section-tag">My Work</span>
-              <h2 class="section-heading">Featured Projects</h2>
-            </header>
-            <div class="project-slider" id="projectSlider">
-              <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Previous project">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              <div class="slider-track" id="sliderTrack">
-                <!-- Project 1 -->
-                <div class="project-slide">
-                  <div class="project-card-lg">
-                    <div class="project-card-visual">
-                      <div class="project-placeholder-lg"><i class="fa-solid fa-users-gear"></i></div>
-                      <div class="project-overlay-lg">
-                        <a href="#" class="project-action" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        <a href="#" class="project-action" title="Source Code"><i class="fa-brands fa-github"></i> Code</a>
-                      </div>
-                    </div>
-                    <div class="project-card-info">
-                      <h3>HRMS — Human Resource Management</h3>
-                      <p>Full-featured HRMS with role-based access, leave management, attendance tracking, and employee dashboards.</p>
-                      <div class="project-tags">
-                        <span class="tag">Next.js</span>
-                        <span class="tag">Spring Boot</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">REST API</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-slide">
-                  <div class="project-card-lg">
-                    <div class="project-card-visual">
-                      <div class="project-placeholder-lg"><i class="fa-solid fa-cart-shopping"></i></div>
-                      <div class="project-overlay-lg">
-                        <a href="#" class="project-action" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        <a href="#" class="project-action" title="Source Code"><i class="fa-brands fa-github"></i> Code</a>
-                      </div>
-                    </div>
-                    <div class="project-card-info">
-                      <h3>E-Commerce Web Application</h3>
-                      <p>Online shopping platform with product catalog, cart system, user authentication, and payment integration.</p>
-                      <div class="project-tags">
-                        <span class="tag">React JS</span>
-                        <span class="tag">Java</span>
-                        <span class="tag">Spring Boot</span>
-                        <span class="tag">PostgreSQL</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="project-slide">
-                  <div class="project-card-lg">
-                    <div class="project-card-visual">
-                      <div class="project-placeholder-lg"><i class="fa-solid fa-newspaper"></i></div>
-                      <div class="project-overlay-lg">
-                        <a href="#" class="project-action" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        <a href="#" class="project-action" title="Source Code"><i class="fa-brands fa-github"></i> Code</a>
-                      </div>
-                    </div>
-                    <div class="project-card-info">
-                      <h3>Portfolio Website</h3>
-                      <p>Modern personal portfolio with smooth animations, responsive design, and interactive UI components.</p>
-                      <div class="project-tags">
-                        <span class="tag">HTML5</span>
-                        <span class="tag">CSS3</span>
-                        <span class="tag">JavaScript</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="project-slide">
-                  <div class="project-card-lg">
-                    <div class="project-card-visual">
-                      <div class="project-placeholder-lg"><i class="fa-solid fa-list-check"></i></div>
-                      <div class="project-overlay-lg">
-                        <a href="#" class="project-action" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        <a href="#" class="project-action" title="Source Code"><i class="fa-brands fa-github"></i> Code</a>
-                      </div>
-                    </div>
-                    <div class="project-card-info">
-                      <h3>Task Management App</h3>
-                      <p>Productivity tool for managing daily tasks with drag-and-drop, priority levels, and deadline tracking.</p>
-                      <div class="project-tags">
-                        <span class="tag">React JS</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">MongoDB</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button class="slider-arrow slider-next" id="sliderNext" aria-label="Next project">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
-              <div class="slider-dots" id="sliderDots"></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ═══════ PANEL 6: CONTACT ═══════ -->
-        <section class="panel" id="contact">
-          <div class="panel-inner contact-inner">
-            <header class="section-header">
+          <!-- ═══════ CONTACT — Glassmorphism Form ═══════ -->
+          <section class="section" id="contact">
+            <div class="contact-wrapper">
               <span class="section-tag">Say Hello</span>
-              <h2 class="section-heading">Get In Touch</h2>
-            </header>
-            <p class="contact-subtitle">My inbox is always open. Whether you have a question or just want to say hello, I'll try my best to get back to you!</p>
+              <h2 class="section-heading reveal-up">Get In Touch</h2>
+              <p class="contact-subtitle">My inbox is always open. Whether you have a question or just want to say hello, I'll try my best to get back to you!</p>
 
-            <div class="contact-box">
-              <div class="contact-info">
-                <div class="contact-info-item">
-                  <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-                  <div>
-                    <h4>Phone</h4>
-                    <a href="tel:+917708765569" target="_blank" rel="noopener">+91 7708765569</a>
+              <div class="contact-grid">
+                <!-- Info side -->
+                <div class="contact-info">
+                  <div class="contact-info-item">
+                    <div class="contact-icon-circle"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                      <h4>Phone</h4>
+                      <a href="tel:+917708765569" target="_blank" rel="noopener">+91 7708765569</a>
+                    </div>
                   </div>
-                </div>
-                <div class="contact-info-item">
-                  <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
-                  <div>
-                    <h4>Email</h4>
-                    <a href="mailto:navanee03092003@gmail.com" target="_blank" rel="noopener">navanee03092003@gmail.com</a>
+                  <div class="contact-info-item">
+                    <div class="contact-icon-circle"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                      <h4>Email</h4>
+                      <a href="mailto:navanee03092003@gmail.com" target="_blank" rel="noopener">navanee03092003@gmail.com</a>
+                    </div>
                   </div>
-                </div>
-                <div class="contact-info-item">
-                  <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
-                  <div>
-                    <h4>Location</h4>
-                    <a href="https://www.google.com/maps/place/Velachery,+Chennai,+Tamil+Nadu,+India" target="_blank" rel="noopener">Velachery, Chennai, Tamil Nadu, India</a>
+                  <div class="contact-info-item">
+                    <div class="contact-icon-circle"><i class="fa-solid fa-location-dot"></i></div>
+                    <div>
+                      <h4>Location</h4>
+                      <a href="https://www.google.com/maps/place/Velachery,+Chennai,+Tamil+Nadu,+India" target="_blank" rel="noopener">Velachery, Chennai, India</a>
+                    </div>
+                  </div>
+                  <div class="contact-socials">
+                    <a href="https://github.com/" target="_blank" rel="noopener" class="contact-social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com/" target="_blank" rel="noopener" class="contact-social-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://instagram.com/" target="_blank" rel="noopener" class="contact-social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://twitter.com/" target="_blank" rel="noopener" class="contact-social-link" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                   </div>
                 </div>
 
-                <div class="social-links">
-                  <a href="https://github.com/" target="_blank" rel="noopener" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                  <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                  <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                  <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-link" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <!-- Form side -->
+                <div class="contact-form-card">
+                  <form class="contact-form" id="contactForm" method="POST" novalidate>
+                    <div class="form-group">
+                      <input id="name" name="name" type="text" placeholder=" " required autocomplete="name" />
+                      <label for="name">Your Full Name</label>
+                    </div>
+                    <div class="form-group">
+                      <input id="mail" name="email" type="email" placeholder=" " required autocomplete="email" />
+                      <label for="mail">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                      <textarea id="message" name="message" placeholder=" " required></textarea>
+                      <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn-submit" id="submitBtn" disabled>
+                      <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> Send Message</span>
+                      <span class="btn-loading"><i class="fa-solid fa-spinner fa-spin"></i> Sending...</span>
+                    </button>
+                    <p class="form-status" id="formStatus"></p>
+                  </form>
                 </div>
               </div>
-
-              <form class="contact-form" id="contactForm" method="POST" novalidate>
-                <div class="form-group">
-                  <input id="name" name="name" type="text" placeholder=" " required autocomplete="name" />
-                  <label for="name">Your Full Name</label>
-                </div>
-                <div class="form-group">
-                  <input id="mail" name="email" type="email" placeholder=" " required autocomplete="email" />
-                  <label for="mail">Your Email</label>
-                </div>
-                <div class="form-group">
-                  <textarea id="message" name="message" placeholder=" " required></textarea>
-                  <label for="message">Your Message</label>
-                </div>
-                <button type="submit" class="btn btn-primary-glow btn-submit" id="submitBtn" disabled>
-                  <span class="btn-text"><i class="fa-solid fa-paper-plane" style="margin-right: 10px;"></i> Send Message</span>
-                  <span class="btn-loading" style="display:none;"><i class="fa-solid fa-spinner fa-spin" style="margin-right: 10px;"></i> Sending...</span>
-                </button>
-                <p class="form-status" id="formStatus"></p>
-              </form>
             </div>
+          </section>
 
-            <footer class="site-footer">
-              <p>Designed & Built by <strong>Navaneethakrishnan</strong></p>
-            </footer>
-          </div>
-        </section>
+          <!-- ═══════ FOOTER ═══════ -->
+          <footer class="site-footer">
+            <p>Designed & Built by <strong>Navaneethakrishnan</strong></p>
+          </footer>
 
-      </main>
+        </main>
+      </div>
     </div>
 
     <script src="script.js"></script>
