@@ -334,11 +334,15 @@ input, textarea {
   background: rgba(0, 0, 0, 0.4);
   z-index: 999;
   opacity: 0;
-  transition: opacity var(--transition-base);
+  pointer-events: none;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
+  visibility: hidden;
 }
 
 .sidebar-overlay.visible {
   opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }
 
 /* ─── MAIN BODY (beside sidebar) ───────────────────── */
@@ -1527,6 +1531,14 @@ input, textarea {
     --content-padding: 1.25rem;
   }
 
+  .identity-greeting {
+    text-align: center;
+  }
+
+  .stat-card {
+        padding: 0.5rem;
+    }
+    
   .identity-panel {
     min-height: 65vh;
     padding: 2.5rem 1.25rem;
