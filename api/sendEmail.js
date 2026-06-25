@@ -97,15 +97,89 @@ export default async function handler(req, res) {
       </html>
     `;
 
-    await transporter.sendMail({
-      from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
-      subject: `💼 Portfolio Message: ${name}`,
-      text: `You have received a new message from your portfolio contact form:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-      html: htmlContent
-    });
+    const clientHtmlContent = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Thank You for Contacting Me</title>
+      </head>
+      <body style="margin: 0; padding: 0; background-color: #f3f4f6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: #1f2937;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f3f4f6; padding: 40px 20px;">
+          <tr>
+            <td align="center">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; border: 1px solid #e5e7eb; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);">
+                <!-- Header Accent Line -->
+                <tr>
+                  <td height="6" style="background: linear-gradient(90deg, #f97316 0%, #fb923c 100%);"></td>
+                </tr>
+                
+                <!-- Main Body -->
+                <tr>
+                  <td style="padding: 40px 30px;">
+                    <!-- Badge -->
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 24px;">
+                      <tr>
+                        <td style="background-color: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); border-radius: 9999px; padding: 6px 16px; font-size: 12px; font-weight: 600; color: #ea580c; text-transform: uppercase; letter-spacing: 0.05em;">
+                          Message Received
+                        </td>
+                      </tr>
+                    </table>
 
+                    <h1 style="margin: 0 0 8px 0; font-size: 24px; font-weight: 700; color: #111827; letter-spacing: -0.025em;">
+                      Hi ${name},
+                    </h1>
+                    <p style="margin: 0 0 24px 0; font-size: 15px; line-height: 1.6; color: #4b5563;">
+                      Thank you for reaching out! I have received your message and will get back to you as soon as possible.
+                    </p>
+
+                    <!-- Copy of Message -->
+                    <div style="margin-bottom: 24px;">
+                      <span style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 8px;">Here is a copy of your message:</span>
+                      <div style="background-color: #f9fafb; border-left: 4px solid #e5e7eb; border-radius: 0 12px 12px 0; padding: 20px; font-size: 15px; line-height: 1.6; color: #4b5563; white-space: pre-wrap; font-style: italic;">"${message}"</div>
+                    </div>
+
+                    <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #111827; font-weight: 600;">
+                      Best regards,<br>
+                      S Navaneethakrishnan
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                  <td style="background-color: #f9fafb; padding: 24px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
+                    <p style="margin: 0; font-size: 12px; color: #6b7280;">
+                      This is an automated confirmation email. Please do not reply directly to this message.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </body>
+      </html>
+    `;
+
+    await Promise.all([
+      transporter.sendMail({
+        from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
+        to: process.env.EMAIL_USER,
+        replyTo: email,
+        subject: `💼 Portfolio Message: ${name}`,
+        text: `You have received a new message from your portfolio contact form:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+        html: htmlContent
+      }),
+      transporter.sendMail({
+        from: `"S Navaneethakrishnan" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: `Thank you for contacting me, ${name}!`,
+        text: `Hi ${name},\n\nThank you for reaching out! I have received your message and will get back to you as soon as possible.\n\nHere is a copy of your message:\n\n"${message}"\n\nBest regards,\nS Navaneethakrishnan`,
+        html: clientHtmlContent
+      })
+    ]);
 
     res.status(200).send("Email sent");
   } catch (error) {

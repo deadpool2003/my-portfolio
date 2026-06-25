@@ -504,6 +504,77 @@
       btnLoading.style.display = 'inline-flex';
       submitBtn.disabled = true;
 
+      function showPopup(type, title, message) {
+        const existing = document.getElementById('popupOverlay');
+        if (existing) existing.remove();
+
+        const overlay = document.createElement('div');
+        overlay.className = 'popup-overlay';
+        overlay.id = 'popupOverlay';
+
+        const isSuccess = type === 'success';
+        const iconClass = isSuccess ? 'fa-solid fa-circle-check' : 'fa-solid fa-circle-xmark';
+
+        overlay.innerHTML = `
+          <div class="popup-card">
+            <div class="popup-icon-wrapper ${type}">
+              <i class="${iconClass}"></i>
+            </div>
+            <h3 class="popup-title">${title}</h3>
+            <p class="popup-message">${message}</p>
+            <button class="popup-btn ${type}" id="popupOkBtn">OK</button>
+            <span class="popup-timer-text" id="popupTimerText">Closing in 5 seconds...</span>
+            <div class="popup-timer-bar ${type}" id="popupTimerBar" style="transform: scaleX(1); transition: transform 5s linear;"></div>
+          </div>
+        `;
+
+        document.body.appendChild(overlay);
+
+        // Trigger reflow
+        overlay.offsetHeight;
+        overlay.classList.add('show');
+
+        // Animate timer bar
+        const timerBar = overlay.querySelector('#popupTimerBar');
+        setTimeout(() => {
+          if (timerBar) timerBar.style.transform = 'scaleX(0)';
+        }, 50);
+
+        let secondsLeft = 5;
+        const timerText = overlay.querySelector('#popupTimerText');
+        const countdownInterval = setInterval(() => {
+          secondsLeft--;
+          if (timerText) {
+            timerText.textContent = `Closing in ${secondsLeft} second${secondsLeft !== 1 ? 's' : ''}...`;
+          }
+          if (secondsLeft <= 0) {
+            clearInterval(countdownInterval);
+            closePopup();
+          }
+        }, 1000);
+
+        function closePopup() {
+          clearInterval(countdownInterval);
+          overlay.classList.remove('show');
+          setTimeout(() => overlay.remove(), 400);
+        }
+
+        const okBtn = overlay.querySelector('#popupOkBtn');
+        if (okBtn) okBtn.addEventListener('click', closePopup);
+
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) closePopup();
+        });
+
+        const escHandler = (e) => {
+          if (e.key === 'Escape') {
+            closePopup();
+            document.removeEventListener('keydown', escHandler);
+          }
+        };
+        document.addEventListener('keydown', escHandler);
+      }
+
       fetch('/api/sendEmail', {
         method: 'POST',
         headers: {
@@ -513,29 +584,30 @@
       })
         .then((response) => {
           if (response.ok) {
-            formStatus.textContent = '✓ Message sent successfully!';
-            formStatus.className = 'form-status success';
+            showPopup(
+              'success',
+              'Message Sent!',
+              'Thank you! Your message was sent, and a confirmation email has been sent to your email address.'
+            );
             const formCard = document.querySelector('.contact-form-card');
             if (formCard) formCard.classList.add('submit-success');
             setTimeout(() => formCard && formCard.classList.remove('submit-success'), 600);
             contactForm.reset();
+            submitBtn.disabled = true;
           } else {
             throw new Error('Form submission failed');
           }
         })
         .catch(() => {
-          formStatus.textContent = '❌ Error sending message. Please try again later.';
-          formStatus.className = 'form-status error';
+          showPopup(
+            'error',
+            'Sending Failed',
+            'Error sending message. Please check your network connection and try again later.'
+          );
         })
         .finally(() => {
           btnText.style.display = 'inline-flex';
           btnLoading.style.display = 'none';
-          submitBtn.disabled = false;
-
-          setTimeout(() => {
-            formStatus.textContent = '';
-            formStatus.className = 'form-status';
-          }, 5000);
         });
     });
   }
