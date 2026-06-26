@@ -1113,9 +1113,6 @@ input, textarea {
 /* ═══════════════════════════════════════════════════════════
    SECTION: CONTACT — Premium Glassmorphism
    ═══════════════════════════════════════════════════════════ */
-.contact-wrapper {
-  max-width: 680px;
-}
 
 .contact-subtitle {
   font-size: 1rem;
@@ -1529,6 +1526,10 @@ input, textarea {
 @media (max-width: 480px) {
   :root {
     --content-padding: 1.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.6rem;
   }
 
   .identity-greeting {
